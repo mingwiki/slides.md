@@ -1,0 +1,88 @@
+.tabs-wrapper {
+  position: fixed;
+  left: 0;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(calc(-100% + 60px));
+  transition: all 1s ease-in-out;
+  border-radius: 50px;
+  box-sizing: border-box;
+  background-color: rgb(77, 75, 74);
+  height: 3rem;
+}
+
+.tabs-wrapper.active {
+  transform: translateX(0);
+}
+
+.tabs-wrapper .iconfont {
+  font-size: 2rem;
+  color: rgb(207, 218, 228);
+  margin: 15px;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+.settings .iconfont:hover {
+  cursor: pointer;
+  color: aquamarine;
+}
+
+.tabs .iconfont.active {
+  box-shadow: 0px 0px 10px 20px #789985;
+}
+
+.panels-wrapper {
+  transform: translateY(200%);
+  opacity: 0;
+  /* background-color: aquamarine; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.panels-wrapper.active {
+  transform: translateY(0);
+  opacity: 0.95;
+}
+
+.panels-wrapper.active .bgcover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: url(../images/3997448.jpg) center;
+  background-size: cover;
+  filter: blur(3px);
+  opacity: 0.8;
+  z-index: -1;
+}
+.panels-wrapper.active .icon-close {
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
+  font-size: 3rem;
+  color: azure;
+  z-index: 2;
+}
+
+.panels .panel.active {
+  position: absolute;
+  left: 3rem;
+  top: 3rem;
+  bottom: 5rem;
+  right: 3rem;
+  font-size: 8em;
+  border-radius: 1rem;
+  background-color: #0f0f0fd2;
+  color: aliceblue;
+  z-index: 1;
+}
+.settings .iconfont:hover {
+  cursor: pointer;
+  color: aquamarine;
+}
