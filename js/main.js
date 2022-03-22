@@ -96,33 +96,52 @@ ${arr[i]}
   return html;
 }
 
-document.querySelector('.reveal .slides').innerHTML = convert(raw)
+const $ = s => document.querySelector(s)
+const $$ = s => document.querySelectorAll(s)
+$('.reveal .slides').innerHTML = convert(raw || `# slides.md`)
+// Also available as an ES module, see:
+// https://revealjs.com/initialization/
+Reveal.initialize({
+  controls: true,
+  progress: true,
+  center: true,
+  hash: true,
 
-document.querySelector(".arrow .iconfont").onclick = function () {
-  document.querySelector(".tabs-wrapper").classList.toggle("active")
+  // Learn about plugins: https://revealjs.com/plugins/
+  plugins: [
+    RevealZoom,
+    RevealNotes,
+    RevealSearch,
+    RevealMarkdown,
+    RevealHighlight,
+  ],
+});
+
+$(".arrow .iconfont").onclick = function () {
+  $(".tabs-wrapper").classList.toggle("active")
   setTimeout(() => {
-    document.querySelector(".arrow .iconfont").classList.toggle("icon-left")
+    $(".arrow .iconfont").classList.toggle("icon-left")
   }, 1200);
 }
-document.querySelectorAll(".tabs .iconfont").forEach(tab => {
+$$(".tabs .iconfont").forEach(tab => {
   tab.onclick = function () {
     this.classList.add("active")
-    document.querySelector(".panels-wrapper").classList.add("active")
-    document.querySelector(".reveal").style.display = "none"
+    $(".panels-wrapper").classList.add("active")
+    $(".reveal").style.display = "none"
     if (this.classList.contains("icon-edit")) {
-      document.querySelector(".panels .edit").classList.add("active")
+      $(".panels .edit").classList.add("active")
     }
     if (this.classList.contains("icon-theme")) {
-      document.querySelector(".panels .theme").classList.add("active")
+      $(".panels .theme").classList.add("active")
     }
     if (this.classList.contains("icon-pdf")) {
-      document.querySelector(".panels .pdf").classList.add("active")
+      $(".panels .pdf").classList.add("active")
     }
   }
 })
-document.querySelector(".panels-wrapper .icon-close").onclick = function () {
-  document.querySelector(".panels-wrapper").classList.remove("active")
-  document.querySelectorAll(".panels .panel").forEach(panel => panel.classList.remove("active"))
-  document.querySelectorAll(".tabs .iconfont").forEach(tab => tab.classList.remove("active"))
-  document.querySelector(".reveal").style.display = "block"
+$(".panels-wrapper .icon-close").onclick = function () {
+  $(".panels-wrapper").classList.remove("active")
+  $$(".panels .panel").forEach(panel => panel.classList.remove("active"))
+  $$(".tabs .iconfont").forEach(tab => tab.classList.remove("active"))
+  $(".reveal").style.display = "block"
 }

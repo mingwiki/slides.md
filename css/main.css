@@ -11,10 +11,14 @@
   box-sizing: border-box;
   background-color: rgb(77, 75, 74);
   height: 3rem;
+  /* opacity: 0; */
 }
-
+/* .tabs-wrapper:hover {
+  opacity: 1;
+} */
 .tabs-wrapper.active {
   transform: translateX(0);
+  /* opacity: 1; */
 }
 
 .tabs-wrapper .iconfont {
@@ -70,12 +74,16 @@
   z-index: 2;
 }
 
+.panels .panel {
+  display: none;
+}
 .panels .panel.active {
   position: absolute;
   left: 3rem;
   top: 3rem;
   bottom: 5rem;
   right: 3rem;
+  display: block;
   font-size: 8em;
   border-radius: 1rem;
   background-color: #0f0f0fd2;
