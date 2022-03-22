@@ -34,24 +34,31 @@
 }
 
 .panels-wrapper {
-  transform: translateY(100%);
   opacity: 0;
-  /* background-color: aquamarine; */
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
   transition: all 3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.panels-wrapper.active {
-  transform: translateY(0);
-  opacity: 0.95;
+.panels-wrapper .panels,.icon-close {
+  transform: translateY(100%);
   /* transition: all 3s; */
+}
+.panels-wrapper.active .panels,.icon-close {
+  transform: translateY(0);
+  transition: all 3s;
 }
 /* .panels-wrapper .bgcover{
  transition: all 3s;
 } */
+.panels-wrapper.active {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.95;
+}
 .panels-wrapper.active .bgcover {
   position: absolute;
   left: 0;
@@ -74,23 +81,21 @@
   z-index: 2;
   transition: all 3s;
 }
-
 .panels .panel {
   visibility: hidden;
-  transition: all 3s;
+  display: none;
 }
-.panels .panel.active {
-  position: absolute;
-  left: 3rem;
-  top: 3rem;
-  bottom: 5rem;
-  right: 3rem;
+.panels-wrapper.active .panels .panel.active {
+  width: 70vw;
+  height: 80vh;
   visibility: visible;
+  display: block;
   font-size: 8em;
   border-radius: 1rem;
   background-color: #0f0f0fd2;
   color: aliceblue;
   z-index: 1;
+  transition: all 3s;
 }
 .settings .iconfont:hover {
   cursor: pointer;
