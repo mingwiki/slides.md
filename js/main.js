@@ -26,10 +26,8 @@ eeeeee
 
 const isMain = str => (/^#{1,2}(?!#)/).test(str)
 const isSub = str => (/^#{3}(?!#)/).test(str)
-
-function convert(raw) {
+const convert = raw => {
   let arr = raw.split(/\n(?=\s*#)/).filter(s => s != "").map(s => s.trim())
-
   let html = ''
   for (let i = 0; i < arr.length; i++) {
 
@@ -69,7 +67,6 @@ ${arr[i]}
 </section>
 `
       }
-
     } else {
       if (isMain(arr[i])) {
         html += `
@@ -90,11 +87,27 @@ ${arr[i]}
 `
       }
     }
-
   }
-
   return html;
 }
+
+const Settings = {
+  init() {
+    console.log("Settings inited")
+  }
+}
+const Editor = {
+  init() {
+    console.log("Editor inited")
+  }
+}
+const App = {
+  init() {
+    [...arguments].forEach(module => module.init())
+  }
+}
+
+App.init(Settings, Editor)
 
 const $ = s => document.querySelector(s)
 const $$ = s => document.querySelectorAll(s)

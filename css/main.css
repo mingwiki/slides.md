@@ -29,17 +29,12 @@
   box-sizing: border-box;
 }
 
-.settings .iconfont:hover {
-  cursor: pointer;
-  color: aquamarine;
-}
-
 .tabs .iconfont.active {
   box-shadow: 0px 0px 10px 20px #789985;
 }
 
 .panels-wrapper {
-  transform: translateY(200%);
+  transform: translateY(100%);
   opacity: 0;
   /* background-color: aquamarine; */
   position: fixed;
@@ -47,6 +42,7 @@
   top: 0;
   right: 0;
   bottom: 0;
+  transition: all 1s;
 }
 .panels-wrapper.active {
   transform: translateY(0);
@@ -72,10 +68,12 @@
   font-size: 3rem;
   color: azure;
   z-index: 2;
+  transition: all 3s;
 }
 
 .panels .panel {
-  display: none;
+  visibility: hidden;
+  transition: all 3s;
 }
 .panels .panel.active {
   position: absolute;
@@ -83,7 +81,7 @@
   top: 3rem;
   bottom: 5rem;
   right: 3rem;
-  display: block;
+  visibility: visible;
   font-size: 8em;
   border-radius: 1rem;
   background-color: #0f0f0fd2;
