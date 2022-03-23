@@ -116,6 +116,34 @@ const Editor = {
     }
   }
 }
+const Themes = {
+  init() {
+    console.log("Themes init")
+    this.bind()
+    this.load()
+  },
+  bind() {
+    $$(".panels .themes figure").forEach(figure => {
+      figure.onclick = () => {
+        $$(".panels .themes figure").forEach(v => v.classList.remove('active'))
+        figure.classList.add('active')
+        this.save(figure.dataset.theme)
+      }
+    })
+  },
+  save(theme) {
+    localStorage.theme = theme
+    location.reload()
+  },
+  load() {
+    let theme = localStorage.theme || 'black'
+    let link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = `dist/theme/${theme}.css`
+    link.id = 'theme'
+    document.head.append(link)
+  }
+}
 const Revealjs = {
   init() {
     console.log("Revealjs init")
@@ -145,4 +173,4 @@ const App = {
   }
 }
 
-App.init(Settings, Editor, Revealjs)
+App.init(Settings, Editor, Themes, Revealjs)
