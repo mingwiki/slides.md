@@ -133,7 +133,7 @@ const Revealjs = {
     })
   },
   load() {
-    $('.reveal .slides').innerHTML = convert(localStorage.markdown || `Slides.md`)
+    $('.reveal .slides').innerHTML = convert(localStorage.markdown || `# Slides.md`)
   }
 }
 const App = {
