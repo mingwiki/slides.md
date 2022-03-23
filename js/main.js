@@ -90,15 +90,48 @@ ${arr[i]}
   }
   return html;
 }
+const $ = s => document.querySelector(s)
+const $$ = s => document.querySelectorAll(s)
 
 const Settings = {
   init() {
-    console.log("Settings inited")
+    console.log("Settings init")
+    this.bind()
+  },
+  bind() {
+    $(".arrow .iconfont").onclick = function () {
+      $(".tabs-wrapper").classList.toggle("active")
+      setTimeout(() => {
+        $(".arrow .iconfont").classList.toggle("icon-left")
+      }, 1200);
+    }
+    $$(".tabs .iconfont").forEach(tab => {
+      tab.onclick = function () {
+        this.classList.add("active")
+        $(".panels-wrapper").classList.add("active")
+        $(".reveal").style.display = "none"
+        if (this.classList.contains("icon-edit")) {
+          $(".panels .edit").classList.add("active")
+        }
+        if (this.classList.contains("icon-theme")) {
+          $(".panels .theme").classList.add("active")
+        }
+        if (this.classList.contains("icon-pdf")) {
+          $(".panels .pdf").classList.add("active")
+        }
+      }
+    })
+    $(".panels-wrapper .icon-close").onclick = function () {
+      $(".panels-wrapper").classList.remove("active")
+      $$(".panels .panel").forEach(panel => panel.classList.remove("active"))
+      $$(".tabs .iconfont").forEach(tab => tab.classList.remove("active"))
+      $(".reveal").style.display = "block"
+    }
   }
 }
 const Editor = {
   init() {
-    console.log("Editor inited")
+    console.log("Editor init")
   }
 }
 const App = {
@@ -109,8 +142,7 @@ const App = {
 
 App.init(Settings, Editor)
 
-const $ = s => document.querySelector(s)
-const $$ = s => document.querySelectorAll(s)
+
 $('.reveal .slides').innerHTML = convert(raw || `# slides.md`)
 // Also available as an ES module, see:
 // https://revealjs.com/initialization/
@@ -130,31 +162,3 @@ Reveal.initialize({
   ],
 });
 
-$(".arrow .iconfont").onclick = function () {
-  $(".tabs-wrapper").classList.toggle("active")
-  setTimeout(() => {
-    $(".arrow .iconfont").classList.toggle("icon-left")
-  }, 1200);
-}
-$$(".tabs .iconfont").forEach(tab => {
-  tab.onclick = function () {
-    this.classList.add("active")
-    $(".panels-wrapper").classList.add("active")
-    $(".reveal").style.display = "none"
-    if (this.classList.contains("icon-edit")) {
-      $(".panels .edit").classList.add("active")
-    }
-    if (this.classList.contains("icon-theme")) {
-      $(".panels .theme").classList.add("active")
-    }
-    if (this.classList.contains("icon-pdf")) {
-      $(".panels .pdf").classList.add("active")
-    }
-  }
-})
-$(".panels-wrapper .icon-close").onclick = function () {
-  $(".panels-wrapper").classList.remove("active")
-  $$(".panels .panel").forEach(panel => panel.classList.remove("active"))
-  $$(".tabs .iconfont").forEach(tab => tab.classList.remove("active"))
-  $(".reveal").style.display = "block"
-}
