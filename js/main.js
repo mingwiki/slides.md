@@ -118,6 +118,7 @@ const Editor = {
 }
 const Revealjs = {
   init() {
+    console.log("Revealjs init")
     this.load()
     Reveal.initialize({
       controls: true,
