@@ -136,7 +136,7 @@ const Revealjs = {
   },
   load() {
     // $('.reveal .slides').innerHTML = convert(localStorage.markdown || `# Slides.md`)
-    $('.reveal .slides textarea').innerHTML = localStorage.markdown
+    $('.reveal .slides textarea').innerHTML = localStorage.markdown || $(".edit textarea").value
   }
 }
 const App = {
