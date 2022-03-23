@@ -25,26 +25,22 @@
 .tabs .iconfont.active {
   box-shadow: 0px 0px 10px 20px #789985;
 }
-.panels-wrapper {
-  opacity: 0;
-  transition: all 1s ease-in-out;
-}
 .panels-wrapper.active {
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 .panels-wrapper .panel,
 .panels-wrapper .icon-close {
   transform: translateY(100vh);
-  transition: all 2s ease-in-out;
 }
-.panels-wrapper.active .panel.active,
+.panels-wrapper .panel.active,
 .panels-wrapper.active .icon-close {
   transform: translateY(0);
+  transition: all 1s;
 }
 .panels-wrapper .bgcover {
   background: url(../images/3997448.jpg) center;
@@ -52,7 +48,6 @@
   filter: blur(3px);
   opacity: 0;
   z-index: -1;
-  transition: all 3s ease-in-out;
 }
 .panels-wrapper.active .bgcover {
   position: absolute;
@@ -61,6 +56,7 @@
   bottom: 0;
   right: 0;
   opacity: 1;
+  transition: all 2s;
 }
 .panels-wrapper.active .icon-close {
   position: absolute;
@@ -70,19 +66,47 @@
   font-size: 3rem;
   z-index: 2;
 }
-.panels-wrapper.active .panel.active {
+.panels-wrapper .panel.active {
   position: absolute;
   top: 4rem;
   right: 4rem;
   bottom: 5rem;
   left: 4rem;
-  font-size: 4rem;
   border-radius: 1rem;
   background-color: #0f0f0fd2;
   color: aliceblue;
   z-index: 1;
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
 }
 .settings .iconfont:hover {
   cursor: pointer;
   color: aquamarine;
+}
+
+.panels .panel.active .header {
+  font-size: 40px;
+  padding: 20px;
+  border-bottom: 1px solid #425351;
+}
+
+.panels .panel.active textarea {
+  width: 90%;
+  height: 100%;
+  padding: 10px;
+  /* background: #283231; */
+  background: transparent;
+  color: #aaa;
+  border: 2px dashed #425351;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  outline: none;
+  align-self: center;
+}
+.panels .panel.active .save {
+  align-self: flex-end;
+  width: 5rem;
+  border-radius: 1rem;
+  margin: 1rem;
 }

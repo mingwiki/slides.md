@@ -1,29 +1,3 @@
-let raw = `
-# 开篇介绍
-这是一个XXXXX报告
-
-## 第一章
-aaaaaaaa
-
-## 第二章
-bbbbbbbb
-
-### 第一节
-ccc111
-
-### 第二节
-ccc222
-
-### 第三节
-ccc333
-
-## 第三章
-dddddd
-
-## 第四章
-eeeeee
-`
-
 const isMain = str => (/^#{1,2}(?!#)/).test(str)
 const isSub = str => (/^#{3}(?!#)/).test(str)
 const convert = raw => {
@@ -132,6 +106,34 @@ const Settings = {
 const Editor = {
   init() {
     console.log("Editor init")
+    this.bind()
+  },
+  bind() {
+    $(".edit .save").onclick = () => {
+      localStorage.markdown = $(".edit textarea").value
+      location.reload()
+    }
+  }
+}
+const Revealjs = {
+  init() {
+    this.load()
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+      plugins: [
+        RevealZoom,
+        RevealNotes,
+        RevealSearch,
+        RevealMarkdown,
+        RevealHighlight,
+      ],
+    })
+  },
+  load() {
+    $('.reveal .slides').innerHTML = convert(localStorage.markdown || `Slides.md`)
   }
 }
 const App = {
@@ -140,25 +142,4 @@ const App = {
   }
 }
 
-App.init(Settings, Editor)
-
-
-$('.reveal .slides').innerHTML = convert(raw || `# slides.md`)
-// Also available as an ES module, see:
-// https://revealjs.com/initialization/
-Reveal.initialize({
-  controls: true,
-  progress: true,
-  center: true,
-  hash: true,
-
-  // Learn about plugins: https://revealjs.com/plugins/
-  plugins: [
-    RevealZoom,
-    RevealNotes,
-    RevealSearch,
-    RevealMarkdown,
-    RevealHighlight,
-  ],
-});
-
+App.init(Settings, Editor, Revealjs)
