@@ -35,7 +35,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: 0.95;
+  opacity: 0.8;
 }
 .panels-wrapper .panel,
 .panels-wrapper .icon-close {
@@ -52,7 +52,7 @@
   filter: blur(3px);
   opacity: 0;
   z-index: -1;
-  transition: all 2s ease-in-out;
+  transition: all 3s ease-in-out;
 }
 .panels-wrapper.active .bgcover {
   position: absolute;
