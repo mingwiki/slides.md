@@ -146,3 +146,13 @@
 .panels .footer select {
   width: max-content;
 }
+.panels .pdf .content {
+  height: 100%;
+  width: 100%;
+}
+.panels .pdf button {
+  width: max-content;
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+}

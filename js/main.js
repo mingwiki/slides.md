@@ -151,6 +151,17 @@ const Themes = {
     $('.reveal .slides section').dataset.transition = localStorage.transition || 'slide'
   }
 }
+const Print = {
+  init() {
+    $('.panels .pdf .content').src = location.href + "?print-pdf"
+    this.bind()
+  },
+  bind() {
+    $('.panels .pdf button').onclick = () => {
+      $('.panels .pdf .content').contentWindow.print()
+    }
+  }
+}
 const Revealjs = {
   init() {
     console.log("Revealjs init")
@@ -180,4 +191,4 @@ const App = {
   }
 }
 
-App.init(Settings, Editor, Themes, Revealjs)
+App.init(Settings, Editor, Themes, Print, Revealjs)
