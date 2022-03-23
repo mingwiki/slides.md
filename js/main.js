@@ -130,6 +130,10 @@ const Themes = {
         this.save(figure.dataset.theme)
       }
     })
+    $('.panels .footer .transition').onchange = function () {
+      localStorage.transition = this.value
+      location.reload()
+    }
   },
   save(theme) {
     localStorage.theme = theme
@@ -142,6 +146,9 @@ const Themes = {
     link.href = `dist/theme/${theme}.css`
     link.id = 'theme'
     document.head.append(link)
+    $(`.themes figure[data-theme=${theme}]`).classList.add('active')
+    $('.panels .footer .transition').value = localStorage.transition || 'slide'
+    $('.reveal .slides section').dataset.transition = localStorage.transition || 'slide'
   }
 }
 const Revealjs = {
