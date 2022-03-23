@@ -106,6 +106,7 @@ const Settings = {
 const Editor = {
   init() {
     console.log("Editor init")
+    $(".edit textarea").value = localStorage.markdown || `# Slides.md`
     this.bind()
   },
   bind() {
@@ -134,7 +135,7 @@ const Revealjs = {
   },
   load() {
     // $('.reveal .slides').innerHTML = convert(localStorage.markdown || `# Slides.md`)
-    $('.reveal .slides textarea').innerHTML = localStorage.markdown || `# Slides.md`
+    $('.reveal .slides textarea').innerHTML = localStorage.markdown
   }
 }
 const App = {
