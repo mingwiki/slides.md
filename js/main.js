@@ -55,8 +55,8 @@ const Editor = {
 const Themes = {
   init() {
     console.log("Themes init")
-    this.bind()
     this.load()
+    this.bind()
   },
   bind() {
     $$(".panels .themes figure").forEach(figure => {
