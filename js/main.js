@@ -31,6 +31,9 @@ const Settings = {
         }
       }
     })
+    $('.tabs .icon-pdf').addEventListener('click', function () {
+      $('.panels .pdf .content').src = location.href + "?print-pdf"
+    })
     $(".panels-wrapper .icon-close").onclick = function () {
       $(".panels-wrapper").classList.remove("active")
       $$(".panels .panel").forEach(panel => panel.classList.remove("active"))
@@ -89,7 +92,6 @@ const Themes = {
 }
 const Print = {
   init() {
-    $('.panels .pdf .content').src = location.href + "?print-pdf"
     this.bind()
   },
   bind() {
@@ -117,7 +119,6 @@ const Revealjs = {
     })
   },
   load() {
-    // $('.reveal .slides').innerHTML = convert(localStorage.markdown || `# Slides.md`)
     $('.reveal .slides textarea').innerHTML = localStorage.markdown || $(".edit textarea").value
   }
 }
